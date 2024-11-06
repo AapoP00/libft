@@ -15,6 +15,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+char	*ft_strdup(const char *s);
+void	*ft_calloc(size_t nmemb, size_t size);
 int		ft_atoi(const char *str);
 void	*ft_bzero(void *str, size_t co);
 int		ft_isalnum(int a);
@@ -30,7 +32,7 @@ void	*ft_memset(void *str, int ch, size_t co);
 char	*ft_strchr(const char *str, int chr);
 int		ft_strlcat(char *dest, const char *src, size_t s);
 int		ft_strlcpy(char *dest, const char *src, size_t s);
-size_t	ft_strlen(char *str);
+size_t	ft_strlen(const char *str);
 int		ft_strncmp(const char *str1, const char *str2, size_t nr);
 char	*ft_strnstr(const char *str1, const char *str2, size_t n);
 char	*ft_strrchr(const char *str, int c);
