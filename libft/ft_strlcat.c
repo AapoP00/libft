@@ -24,6 +24,7 @@ int	ft_strlcat(char *dest, const char *src, size_t s)
 	len = 0;
 	len2 = 0;
 	pos2 = 0;
+	sc = (char *)src;
 	while (sc[len])
 		len++;
 	while (dest[len2])
@@ -32,7 +33,7 @@ int	ft_strlcat(char *dest, const char *src, size_t s)
 	if (len2 < s - 1 && s > 0)
 	{
 		while (src[pos] && len2 + pos < s - 1)
-			dest[pos2++] = src[pos++];
+			dest[pos2++] = sc[pos++];
 		dest[pos2] = '\0';
 	}
 	if (len2 >= s)
