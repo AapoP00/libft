@@ -17,22 +17,23 @@ char	*ft_strnstr(const char *str1, const char *str2, size_t n)
 	size_t		pos;
 	size_t		tmp;
 	int			pos2;
-	char		*sr1;
 
 	pos = 0;
-	sr1 = (char *)str1;
 	pos2 = 0;
-	if (str2 == NULL || str2[0] == '\0')
-		return (sr1);
-	while (sr1[pos] != '\0' && pos < n)
+	if (str2[0] == '\0')
+		return ((char *)str1);
+	while (str1[pos] != '\0' && pos < n)
 	{
-		if (sr1[pos] == str2[0])
+		if (str1[pos] == str2[0])
 		{
 			tmp = pos;
-			while (sr1[tmp++] == str2[pos2] && sr1[tmp] != '\0' && tmp < n)
+			while (str1[tmp] == str2[pos2] && str1[tmp] != '\0' && tmp < n)
+			{
+				tmp++;
 				pos2++;
+			}
 			if (str2[pos2] == '\0')
-				return (sr1 + pos);
+				return ((char *)str1 + pos);
 			pos2 = 0;
 		}
 		pos++;

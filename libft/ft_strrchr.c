@@ -14,22 +14,16 @@
 
 char	*ft_strrchr(const char *str, int c)
 {
-	int	tmp;
-	int	cha;
+	signed int		len;
+	unsigned char	found;
 
-	cha = 0;
-	while (str[cha] != '\0')
+	len = ft_strlen(str);
+	found = (char)c;
+	while (len >= 0)
 	{
-		if (str[cha] == c)
-			tmp = cha;
-		cha++;
+		if (str[len] == found)
+			return ((char *) &str[len]);
+		len--;
 	}
-	if (tmp != -1)
-	{
-		return ((char *)str + tmp);
-	}
-	if (c == '\0')
-		return ((char *)str + cha);
-	else
-		return (0);
+	return (NULL);
 }

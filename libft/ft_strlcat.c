@@ -16,27 +16,19 @@ int	ft_strlcat(char *dest, const char *src, size_t s)
 {
 	size_t	pos;
 	size_t	pos2;
-	size_t	len;
-	size_t	len2;
-	char	*sc;
 
 	pos = 0;
-	len = 0;
-	len2 = 0;
 	pos2 = 0;
-	sc = (char *)src;
-	while (sc[len])
-		len++;
-	while (dest[len2])
-		len2++;
-	pos2 = len2;
-	if (len2 < s - 1 && s > 0)
+	if (s <= 0)
+		return (ft_strlen(src));
+	while (dest[pos] && pos < s)
+		pos++;
+	while (src[pos2] && (pos + pos2 + 1) < s)
 	{
-		while (src[pos] && len2 + pos < s - 1)
-			dest[pos2++] = sc[pos++];
-		dest[pos2] = '\0';
+		dest[pos + pos2] = src[pos2];
+		pos2++;
 	}
-	if (len2 >= s)
-		len2 = s;
-	return (len + len2);
+	if (pos < s)
+		dest[pos + pos2] = '\0';
+	return (pos + ft_strlen(src));
 }

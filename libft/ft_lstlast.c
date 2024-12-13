@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apuisto <apuisto@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 17:35:16 by apuisto           #+#    #+#             */
-/*   Updated: 2024/11/06 17:35:17 by apuisto          ###   ########.fr       */
+/*   Created: 2024/11/13 12:01:01 by apuisto           #+#    #+#             */
+/*   Updated: 2024/11/13 12:01:03 by apuisto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+t_list	*ft_lstlast(t_list *lst)
 {
-	size_t		i;
-	char		*ret;
-
-	i = 0;
-	ret = (char *)malloc(sizeof(*s) * ft_strlen(s) + 1);
-	if (!ret)
+	if (!lst)
 		return (NULL);
-	while (s[i] != '\0')
+	while (lst->next)
 	{
-		ret[i] = s[i];
-		i++;
+		lst = lst->next;
 	}
-	ret[i] = 0;
-	return (ret);
+	return (lst);
 }

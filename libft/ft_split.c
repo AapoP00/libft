@@ -54,7 +54,7 @@ static size_t	ft_wlen(const char *s, char c)
 	return (ret);
 }
 
-char	*ft_pickword(const char **arr, char c)
+static char	*ft_pickword(const char **arr, char c)
 {
 	const char	*pos;
 	char		*ret;
