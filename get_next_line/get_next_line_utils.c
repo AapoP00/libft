@@ -12,20 +12,16 @@
 
 #include "get_next_line.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	*ft_calloc(size_t count, size_t size)
 {
-	void	*ret;
+	char	*res;
 
-	if (nmemb * size == 0)
-		return (malloc(0));
-	ret = (void *)malloc(nmemb * size);
-	if (!ret)
+	res = malloc(size * count);
+	if (!res)
 		return (NULL);
-	ft_bzero(ret, nmemb * size);
-	return (ret);
+	ft_bzero(res, size * count);
+	return (res);
 }
-
-
 
 char	*ft_strchr(const char *str, int chr)
 {
@@ -55,37 +51,40 @@ void	*ft_bzero(void *str, size_t co)
 	return (str);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
-	size_t	len;
-	size_t	len2;
-	size_t	len3;
-	size_t	pos;
-	char	*ret;
+	char		*new_str;
+	size_t		i;
+	size_t		j;
+	size_t		total;
 
-	len2 = 0;
-	len3 = 0;
-	pos = 0;
-	len = ft_strlen(s1) + ft_strlen(s2);
-	ret = malloc(sizeof(char) * len + 1);
-	if (!ret)
+	total = ft_strlen(s1) + ft_strlen(s2);
+	new_str = malloc(sizeof(char) * (total + 1));
+	if (!new_str || !s1 || !s2)
 		return (NULL);
-	while (s1[len3])
-		ret[pos++] = s1[len3++];
-	while (s2[len2])
-		ret[pos++] = s2[len2++];
-	ret[pos] = 0;
-	return (ret);
+	i = 0;
+	while (s1[i])
+	{
+		new_str[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j])
+	{
+		new_str[i] = s2[j];
+		j++;
+		i++;
+	}
+	new_str[total] = 0;
+	return (new_str);
 }
 
 size_t	ft_strlen(const char *str)
 {
-	size_t	count;
+	int	i;
 
-	count = 0;
-	while (str[count] != '\0')
-	{
-		count++;
-	}
-	return (count);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
